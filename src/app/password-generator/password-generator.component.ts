@@ -9,14 +9,15 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './password-generator.component.html',
   styleUrls: ['./password-generator.component.css'] 
 })
-export class PasswordGeneratorComponent  {
+export class PasswordGeneratorComponent {
   password: string = 'Click on generate';
   length: number = 4;
   includeUpperCase: boolean = true;
   includeLowercase: boolean = true;
   includeNumbers: boolean = true;
   includeSpecial: boolean = true;
-  
+  passwordStrength: number = 0;
+
   generatepassword() {
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -41,7 +42,17 @@ export class PasswordGeneratorComponent  {
       const randomIndex = Math.floor(Math.random() * charSet.length);
       this.password += charSet[randomIndex];
     }
+
+    this.generateStrength(); // Update password strength after generating the password
   }
 
-
+  generateStrength(): void {
+    let strength = 0;
+    if (this.includeLowercase) strength++;
+    if (this.includeUpperCase) strength++;
+    if (this.includeNumbers) strength++;
+    if (this.includeSpecial) strength++;
+    
+    this.passwordStrength = strength;
+  }
 }
