@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-password-generator',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './password-generator.component.html',
-  styleUrls: ['./password-generator.component.css'] // Corrected the name from styleUrl to styleUrls
+  styleUrls: ['./password-generator.component.css'] 
 })
 export class PasswordGeneratorComponent  {
   password: string = 'Click on generate';
-  length: number = 12;
+  length: number = 4;
   includeUpperCase: boolean = true;
+  includeLowercase: boolean = true;
   includeNumbers: boolean = true;
   includeSpecial: boolean = true;
   
@@ -40,5 +42,6 @@ export class PasswordGeneratorComponent  {
       this.password += charSet[randomIndex];
     }
   }
+
 
 }
