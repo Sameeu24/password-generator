@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -6,24 +6,24 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [FormsModule],
   templateUrl: './password-generator.component.html',
-  styleUrl: './password-generator.component.css'
+  styleUrls: ['./password-generator.component.css'] // Corrected the name from styleUrl to styleUrls
 })
-export class PasswordGeneratorComponent {
-  password: string ='Click on generate';
-  length:number=12;
-  includeUpperCase:boolean=true;
-  includeNumbers:boolean=true;
-  includeSpecial:boolean=true;
+export class PasswordGeneratorComponent  {
+  password: string = 'Click on generate';
+  length: number = 12;
+  includeUpperCase: boolean = true;
+  includeNumbers: boolean = true;
+  includeSpecial: boolean = true;
   
-  generatepassword(){
+  generatepassword() {
     const lowercaseChars = 'abcdefghijklmnopqrstuvwxyz';
     const uppercaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const numberChars = '0123456789';
     const specialChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';  
 
-    let charSet=lowercaseChars;
-    if(this.includeUpperCase){
-      charSet+=uppercaseChars;
+    let charSet = lowercaseChars;
+    if (this.includeUpperCase) {
+      charSet += uppercaseChars;
     }
 
     if (this.includeNumbers) {
