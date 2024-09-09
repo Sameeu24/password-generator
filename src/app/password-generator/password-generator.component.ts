@@ -43,7 +43,7 @@ export class PasswordGeneratorComponent {
       this.password += charSet[randomIndex];
     }
 
-    this.generateStrength(); // Update password strength after generating the password
+    this.generateStrength(); 
   }
 
   generateStrength(): void {
